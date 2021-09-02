@@ -52,10 +52,11 @@
         </button>
     </div>
 
+
     <div class="bground">
         <div class="content">
             <span class="close"></span>
-            <div class="modal-body">
+            <div id="registrationForm" class="modal-body">
                 <form
                         id="reserve"
                         name="reserve"
@@ -112,14 +113,12 @@
                         <input class="text-control" id="quantity" name="quantity" min="0" max="99">
                     </div>
                     <!--                Change Label so it's more explicit-->
-                    <p class="text-label">Dans quelle(s) ville(s) souhaitez-vous vous inscrire ?</p>
+                    <p class="text-label">Dans quelle ville souhaitez-vous vous inscrire ?</p>
                     <div
                             class="formData">
-
-                        <!--                I replaced type='radio' by type='checkbox'-->
                         <input
                                 class="checkbox-input"
-                                type="checkbox"
+                                type="radio"
                                 id="location1"
                                 name="location"
                                 value="New York"
@@ -130,7 +129,7 @@
                         >
                         <input
                                 class="checkbox-input"
-                                type="checkbox"
+                                type="radio"
                                 id="location2"
                                 name="location"
                                 value="San Francisco"
@@ -141,7 +140,7 @@
                         >
                         <input
                                 class="checkbox-input"
-                                type="checkbox"
+                                type="radio"
                                 id="location3"
                                 name="location"
                                 value="Seattle"
@@ -152,7 +151,7 @@
                         >
                         <input
                                 class="checkbox-input"
-                                type="checkbox"
+                                type="radio"
                                 id="location4"
                                 name="location"
                                 value="Chicago"
@@ -163,7 +162,7 @@
                         >
                         <input
                                 class="checkbox-input"
-                                type="checkbox"
+                                type="radio"
                                 id="location5"
                                 name="location"
                                 value="Boston"
@@ -174,7 +173,7 @@
                         >
                         <input
                                 class="checkbox-input"
-                                type="checkbox"
+                                type="radio"
                                 id="location6"
                                 name="location"
                                 value="Portland"
@@ -210,6 +209,10 @@
                             value="C'est parti"
                     />
                 </form>
+            </div>
+            <div id="confirmationForm" class="modal-body">
+                <p>Merci ! Votre réservation a été reçue.</p>
+                <button id="confirmationBtn" class="button btn-submit">Fermer</button>
             </div>
         </div>
     </div>

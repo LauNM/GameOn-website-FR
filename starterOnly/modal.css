@@ -99,7 +99,7 @@ img {
     display: block;
     margin-top: -15px;
   }
-} 
+}
 
 main {
   font-size: 130%;
@@ -156,7 +156,12 @@ main {
 .smFont {
   font-size: 16px;
 }
-
+#registrationForm {
+  display: block;
+}
+#confirmationForm {
+  display: none;
+}
 .bground {
   display: none;
   position: fixed;
