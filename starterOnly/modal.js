@@ -80,63 +80,60 @@ function submitForm() {
     event.preventDefault();
 
     //Set data-error-visible to false everytime the form is submitted
-   /* for (let i = 0; i < formData.length; i++) {
-        formData[i].setAttribute('data-error-visible', 'false')
-    }*/
     formData.forEach(el => el.setAttribute('data-error-visible', 'false'));
-
-    //Create variable "isValid" : value = 0 if there is at least 1 error, value = 1 if there is no error
-    let isValid;
 
     //Check if there are errors
     function checkValidity() {
 
                          /*    ForEach input, check if the conditions are respected  */
 
+        //Create variable "isValid" : default value = true, value pass to false if there is at least 1 error
+        let isValid = true;
+
         //Value.length must be > 2
         if (firstName.value.length < 2) {
             firstName.parentElement.setAttribute('data-error', 'Ce champ doit contenir au moins 2 caractères');
             firstName.parentElement.setAttribute('data-error-visible', 'true');
-            isValid = 0;
+            isValid = false;
         }
         if (lastName.value.length < 2) {
             lastName.parentElement.setAttribute('data-error', 'Ce champ doit contenir au moins 2 caractères');
             lastName.parentElement.setAttribute('data-error-visible', 'true');
-            isValid = 0;
+            isValid = false;
         }
         // Check if email is not null and if it's actually an email address
         if (email.value.length < 1 || emailRegex.test(email.value) === false) {
             email.parentElement.setAttribute('data-error', 'Cette adresse mail n\'est pas valide');
             email.parentElement.setAttribute('data-error-visible', 'true');
-            isValid = 0;
+            isValid = false;
         }
 
         //Compare birthdate with today's date
         if (birthdate > today) {
             birthdayInput.parentElement.setAttribute('data-error', 'Il n\'est pas possible de donner une date dans le futur');
             birthdayInput.parentElement.setAttribute('data-error-visible', 'true');
-            isValid = 0;
+            isValid = false;
         }
 
         //Check if birthdate is given
         if (birthdayInput.value.length < 1) {
             birthdayInput.parentElement.setAttribute('data-error', 'Veuillez renseigner votre date de naissance');
             birthdayInput.parentElement.setAttribute('data-error-visible', 'true');
-            isValid = 0;
+            isValid = false;
         }
 
         //Check if quantity is given
         if (quantity.value.length < 1) {
             quantity.parentElement.setAttribute('data-error', 'Veuillez renseigner un nombre de tournois');
             quantity.parentElement.setAttribute('data-error-visible', 'true');
-            isValid = 0;
+            isValid = false;
         }
 
         //Check if quantity is a number and if it's > or === to 0
         if (numberRegex.test(quantity.value) === false || quantity.value < 0) {
             quantity.parentElement.setAttribute('data-error', 'Veuillez renseigner une valeur numérique supérieure ou égale à 0');
             quantity.parentElement.setAttribute('data-error-visible', 'true');
-            isValid = 0;
+            isValid = false;
         }
 
 
@@ -151,25 +148,19 @@ function submitForm() {
         if (isChecked === false) {
             locationRadios[0].parentElement.setAttribute('data-error', 'Veuillez sélectionner une ville');
             locationRadios[0].parentElement.setAttribute('data-error-visible', 'true');
-            isValid = 0;
+            isValid = false;
         }
         //Check if "terms of use" checkbox is checked
         if (!terms.checked) {
             terms.parentElement.setAttribute('data-error', 'Vous devez accepter les conditions d\'utilisation pour valider votre inscription');
             terms.parentElement.setAttribute('data-error-visible', 'true');
-            isValid = 0;
-        }
-        else {
-            isValid = 1;
+            isValid = false;
         }
         return isValid;
     }
 
-    //Launch Checking function
-    checkValidity();
-
-    //If no error : Close Form and Show Confirmation message
-    if (isValid === 1) {
+    //If checkValidity return true : Close Form and Show Confirmation message
+    if (checkValidity()) {
         showConfirmation()
     }
     else {
