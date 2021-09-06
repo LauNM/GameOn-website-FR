@@ -161,6 +161,16 @@ main {
 }
 #confirmationForm {
   display: none;
+  height: 750px;
+}
+#confirmationForm > p {
+  position: absolute;
+  top: 45%;
+}
+#confirmationBtn {
+  display: flex;
+  height: 100%;
+  align-items: flex-end;
 }
 .bground {
   display: none;
@@ -191,6 +201,7 @@ main {
 .modal-body {
   padding: 15px 8%;
   margin: 15px auto;
+  min-height: 750px;
 }
 
 label {
@@ -465,6 +476,7 @@ input[data-error]::after {
   grid-column: span 8;
 }
 .hero-img img {
+  object-fit: cover;
   width: 100%;
   height: 100%;
   display: block;
