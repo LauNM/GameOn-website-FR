@@ -40,10 +40,12 @@ const numberRegex = /^[0-9]*$/;
 function launchModal() {
     modalbg.style.display = "block";
 }
-//HIDE MODAL
+//CLOSE MODAL => RESET FORM, SHOW FORM, HIDE CONFIRMATION MESSAGE AND HIDE MODAL
 function closeModal() {
+    form.reset();
+    showRegistration();
     modalbg.style.display = "none";
-    formData.forEach(el => el.setAttribute('data-error-visible', 'false'))
+    formData.forEach(el => el.setAttribute('data-error-visible', 'false'));
 }
 
 //SHOW FORM AND HIDE CONFIRMATION MESSAGE
@@ -57,12 +59,7 @@ function showConfirmation() {
     confirmationForm.style.display = "block" ;
     registrationForm.style.display = "none" ;
 }
-// CLOSE MODAL => RESET FORM, SHOW FORM, HIDE CONFIRMATION MESSAGE AND HIDE MODAL
-function closeMessage() {
-    form.reset();
-    showRegistration();
-    closeModal();
-}
+
 
 //----------------------------------------------------------------------------------------------------------
                                                 /*    USE FUNCTIONS    */
@@ -71,7 +68,7 @@ function closeMessage() {
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 
 // Close Modal when clicking on X
-closeBtn.addEventListener("click", closeMessage);
+closeBtn.addEventListener("click", closeModal);
 
 
 //----------------------------------------------------------------------------------------------------------
@@ -130,7 +127,7 @@ function submitForm() {
         }
 
         //Check if quantity is a number and if it's > or === to 0
-        if (numberRegex.test(quantity.value) === false || quantity.value < 0) {
+        if (numberRegex.test(quantity.value) === false || Number(quantity.value) < 0) {
             quantity.parentElement.setAttribute('data-error', 'Veuillez renseigner une valeur numérique supérieure ou égale à 0');
             quantity.parentElement.setAttribute('data-error-visible', 'true');
             isValid = false;
@@ -172,4 +169,4 @@ function submitForm() {
                                                 /* CLOSE MODAL AFTER VALIDATION */
 
 //Close Modal and reset form when clicking on "Close" button
- closeConfirmation.addEventListener("click", closeMessage);
+ closeConfirmation.addEventListener("click", closeModal);
