@@ -24,7 +24,6 @@ const lastName = document.getElementById('last');
 const email = document.getElementById('email');
 const birthdayInput = document.getElementById('birthdate');
 const today = new Date();
-const birthdate = new Date(birthdayInput.value);
 const quantity = document.getElementById('quantity');
 const locationRadios = document.getElementsByName('location');
 const terms = document.getElementById('checkbox1');
@@ -106,7 +105,7 @@ function submitForm() {
         }
 
         //Compare birthdate with today's date
-        if (birthdate > today) {
+        if (new Date(birthdayInput.value) > today) {
             birthdayInput.parentElement.setAttribute('data-error', 'Il n\'est pas possible de donner une date dans le futur');
             birthdayInput.parentElement.setAttribute('data-error-visible', 'true');
             isValid = false;
